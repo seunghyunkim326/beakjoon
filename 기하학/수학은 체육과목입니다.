@@ -1,0 +1,2 @@
+bottom_number = int(input())
+print(bottom_number*4)
