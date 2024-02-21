@@ -1,0 +1,25 @@
+# 4번 째 점 : 3점 주어짐, 직사각형 만드는 4번 째 점을 찾는 문제
+# x, y 두 리스트를 만들고 3점을 차례대로 받는다.
+x = [0]*3
+y = [0]*3
+for i in range(3):
+    x[i], y[i] = map(int, input().split())
+# 직사각형이라 중복 값 2개 씩 존재함 -> 갯수로 비교하는 방법도 존재
+# 오름차순 정렬 후 첫 숫자(최솟값)이랑 마지막 숫자(최댓값)으로 갯수 비교     sort 써도 됨    오름차순 정렬 똑바로 사용하기!!
+new_x = sorted(x)
+new_y = sorted(y)
+# 0번 2번 인덱스에는 자연스럽게 최소, 최대가 들어가게 되었으니까 count로 1개인거 출력하면 됨
+# x좌표 출력
+if new_x.count(new_x[0]) < 2:
+    print(new_x[0],end=' ')
+elif new_x.count(new_x[2]) < 2:
+    print(new_x[2],end=' ')
+else:
+    pass
+# y좌표 출력
+if new_y.count(new_y[0]) < 2:
+    print(new_y[0])
+elif new_y.count(new_y[2]) < 2:
+    print(new_y[2])
+else:
+    pass
