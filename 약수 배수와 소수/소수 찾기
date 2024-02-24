@@ -1,0 +1,16 @@
+# 소수 찾기 : 주어진 N개 수 중 소수가 몇개인지 출력
+# 수의 갯수 입력받기
+N = int(input())
+count = 0
+arr = list(map(int, input().split()))
+for i in range(N):
+    divisor_check = 0
+    if arr[i] == 1:
+        pass
+    elif arr[i] != 1:
+        for j in range(1, arr[i]):
+            if arr[i] % j == 0:
+                divisor_check += 1
+        if divisor_check == 1:
+            count += 1
+print(count)
