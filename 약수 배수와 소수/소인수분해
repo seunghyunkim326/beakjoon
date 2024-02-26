@@ -1,0 +1,14 @@
+# 소인수분해 : 정수 N이 주어지고 N의 소인수분해 결과를 한 줄에 하나씩 오름차순으로 출력, N이 1이면 아무것도 출력 안함
+N = int(input())
+arr = []
+# N을 소인수분해하기 위해 나누어 가는 과정
+if N == 1:
+    pass
+else:
+    for i in range(2, N+1):
+        while N % i == 0:
+            arr.append(i)
+            N = N / i
+    for j in range(len(arr)):
+        print(arr[j])
+# 시간이 너무 오래 걸리는 문제가 발생한다.
