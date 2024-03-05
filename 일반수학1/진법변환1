@@ -1,0 +1,19 @@
+# 진법 변환 : B진법 수 N을 입력받고 10진수로 바꿔 출력하는 프로그램
+N, B = map(str, input().split())
+B = int(B)
+# 입력받은 N을 거꾸로 만들어줄 배열을 생성
+inverse_N = [0]*len(N)
+for i in range(len(N)):
+    inverse_N[-(i+1)] = N[i]
+# 입력받은 수를 진법에 맞게 변환하여 10진수로 하나씩 받아들이는 리스트, 합계를 나타내는 정수 생성
+num = []
+summation = 0
+# A(65)~Z(90) => 10 ~ 35        아스키코드로 변환 시 65미만이면 정수로 바꿔서 B^자릿수로 num 리스트에 삽입, 65이상이면 아스키코드-55로 변환 후 삽입
+for j in range(len(inverse_N)):
+    if ord(inverse_N[j]) >= 65:
+        num.append((ord(inverse_N[j])-55)*(B**j))
+    else:
+        num.append(int(inverse_N[j])*(B**j))
+for k in range(len(num)):
+    summation += num[k]
+print(summation)
