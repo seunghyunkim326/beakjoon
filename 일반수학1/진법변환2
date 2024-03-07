@@ -1,0 +1,47 @@
+# 진법변환2 : 10진법수 주어짐 -> 바꿀진법수 B입력 -> B진법으로 변환
+# 리스트에 나눈 나머지에 따라 삽입해 나가는 방법
+# B^K보다 작은 K를 찾고 K-1부터 K를 줄여나가며 나누어감
+N, B = map(int, input().split())
+result = []
+# 몇자리 수인지 알려면 K를 알아야함
+K = 0
+while B**K <= N:
+    K += 1
+# K를 통해서 B^(K-1)를 나누어 가면서 줄여나감
+# B가 10보다 큰 경우에 영어로 표현해야 하는 경우가 생기는데, 아스키코드를 사용하여 해결한다.
+if N >= B:
+    if B > 10:
+        temp_1 = N
+        charactor = str(0)
+        while K-1 >= 0:
+            if temp_1 // (B**(K-1)) < 10:
+                number_1 = temp_1 // (B**(K-1))
+                result.append(number_1)
+                temp_1 = temp_1 - (B**(K-1))*number_1
+                K -= 1
+            elif temp_1 // (B**(K-1)) >= 10:
+                number_char = temp_1 // (B**(K-1))
+                charactor = chr((number_char + 55))
+                result.append(charactor)
+                temp_1 = temp_1 - (B**(K-1))*number_char
+                K -= 1
+    elif B == 10:
+        print(N)
+    elif B < 10:
+        temp_2 = N
+        while K-1 >= 0:
+            number_2 = temp_2 // (B**(K-1))
+            result.append(number_2)
+            temp_2 = temp_2 - (B**(K-1))*number_2
+            K -= 1
+    for i in range(len(result)):
+        print(result[i], end='')
+# 처음 나누어 지지 않는 경우에 코드가 성립하지 않음
+elif N < B:
+    if B > 10:
+        if N >= 10:
+            print(chr(N+55))
+        elif N < 10:
+            print(N)
+    else:
+        print(N)
