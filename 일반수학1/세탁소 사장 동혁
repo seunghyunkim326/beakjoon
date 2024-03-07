@@ -1,0 +1,18 @@
+# 세탁소 사장 동혁 : 쿼터($0.25), 다임($0.1), 니켈(%0.05), 페니($0.01), 1달러 = 100센트
+# 입력 -> 테스트케이스 T, 거스름돈을 나타내는 정수 C센트, 1<=C<=500
+# 출력 -> 거슬러주는 쿼터 수, 다임 수, 니켈 수, 페니 수
+T = int(input())
+# 쿼터부터 페니까지 차례대로 나누어야함
+for _ in range(T):
+    C = int(input())
+    result = []
+    q = C // 25
+    result.append(q)
+    d = (C % 25) // 10
+    result.append(d)
+    n = ((C % 25) % 10) // 5
+    result.append(n)
+    p = (((C % 25) % 10) % 5)
+    result.append(p)
+    for i in range(len(result)):
+        print(result[i], end=' ')
