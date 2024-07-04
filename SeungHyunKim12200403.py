@@ -28,4 +28,4 @@ if N > 1:
     print(diff_x*diff_y)
 else:
     print(0)
-# 좌표가 음수도 포함함 => 
+# 좌표가 음수도 포함함 => max값과 min값을 조정
