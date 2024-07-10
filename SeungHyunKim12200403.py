@@ -1,27 +1,14 @@
-# 그룹단어 체커 : N개의 단어 입력받음 -> 그룹단어 갯수 출력     단어는 한글자만 나올 수 있다.=> 무조건 그룹단어라 미리 계산 후 리스트에 안넣음
-# aba => 그룹단어X happy, new, year => 그룹단어
-# 문자열 안의 값을 계속 변경시키면 리스트 범위를 벗어나거나 불안정할 가능성 크다 => 새로운 리스트를 만들어서 같은거 나오면 무시, 다른거 나오면 업데이트 하는 형식(from GPT)
+# 벌집 : 육각형으로 이루어짐, 중앙을 1번부터 시작해서 바깥을 한 바퀴 돌아가면서 1씩 증가
+# N번 방까지 지나가야하는 최소 방의 갯수 출력
 N = int(input())
-storage = []
-minus = 0
-result = 0
-for i in range(N):
-    word = list(input())
-    if len(word) == 1:
-        result += 1
-    else:
-        new_word = []
-        new_word.append(word[0])
-        for j in range(1,len(word)):
-            if word[j] != word[j-1]:
-                new_word.append(word[j])
-        storage.append(''.join(new_word))
-
-for k in range(len(storage)):
-    for checker in storage[k]:
-        if storage[k].count(checker) >= 2:
-            minus += 1
-            break
-    result += 1        
-print(result-minus)
-# 같은 문자가 연속으로 나오면 하나의 문자로 묶어버려 리스트에 넣고 다시 중복된 문자를 찾아서 중복된 문자가 없을 시 result+1
+if N-1 == 0:
+    print("1")
+else:
+    k = 0
+    share = 1
+    while share <= N-1:
+        share = share + 6*k
+        k += 1
+    print(k)
+# X = 1+sigma(6n) 과 같이 표현 가능하고 n을 구하면 지나가야 하는 최소 방의 갯수를 알 수 있다.
+# 이렇게 조건을 알 때, while을 통하여 편리하게 해결 가능하다.
