@@ -1,11 +1,10 @@
 # 달팽이는 올라가고 싶다 : A, B, V 입력받음 V미터 까지 올라가는데 걸리는 일 수 구하기
 # 낮에는 A미터 올라감, 밤에는 B미터 내려감
 A, B, V = map(int,input().split())
-count = 0
-while V >= (A-B)*count:
-    count += 1
-    if V <= count*A - (count-1)*B:
-        break
-    else:
-        pass
-print(count)
+# (V-A)/(A-B) 가 나누어 떨어지는 경우, 나누어 떨어지지 않는 경우 2가지 (후원이가 발견한 규칙)
+# 나누어 떨어지면 +1, 나누어 떨어지지 않으면 +2
+# 정상에 있으면 내려가지 않기 때문에 정상(V)에서 마지막으로 올라가는 경우 A를 빼서 생각한다.
+if (V-A) % (A-B) == 0:
+    print((V-A)//(A-B)+1)
+else:
+    print((V-A)//(A-B)+2)
