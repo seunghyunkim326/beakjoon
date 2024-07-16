@@ -6,8 +6,20 @@ arr = []
 arr.append(a)
 arr.append(b)
 arr.append(c)
-result = sorted(arr)
-if result[2] >= result[0] + result[1]:
-    print(2 * (result[0] + result[1]) - 1)
+
+for i in range(3):
+    for j in range(i+1,3):
+        if arr[i] > arr[j]:
+            temp = arr[j]
+            arr[j] = arr[i]
+            arr[i] = temp
+
+# result = sorted(arr)
+if arr[2] >= arr[0] + arr[1]:
+    print(2 * (arr[0] + arr[1]) - 1)
 else:
-    print(result[0] + result[1] + result[2])
+    print(arr[0] + arr[1] + arr[2])
+# sorted 정렬을 통해서 쉽게 해결 가능한 문제
+# sorted를 대신해서 사용할 코드를 만들어서 해결하는것 추천
+
+# sorted 내장 함수를 사용하지 않고 이중 for문을 사용해서 각 인덱스 끼리 서로 순회하며 대소비교 가능하다.
